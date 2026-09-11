@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarun Jain — Engineering Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1220;
+    --panel:#121B2C;
+    --panel-2:#0F1726;
+    --paper:#ECEAE2;
+    --paper-dim:#C9CBC4;
+    --steel:#7C8797;
+    --line:#26314A;
+    --amber:#F2A93B;
+    --amber-dim:rgba(242,169,59,0.14);
+    --sidebar-w:300px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    font-size:16px;
+  }
+
+  ::selection{background:var(--amber); color:var(--ink);}
+
+  a{color:inherit; text-decoration:none;}
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--paper);
+  }
+
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  .layout{
+    display:flex;
+    min-height:100vh;
+  }
+
+  /* ---------- Sidebar ---------- */
+  aside.sidebar{
+    width:var(--sidebar-w);
+    flex-shrink:0;
+    position:fixed;
+    top:0; left:0; bottom:0;
+    padding:48px 36px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border-right:1px solid var(--line);
+    background:var(--panel-2);
+  }
+
+  .brand h1{
+    font-size:1.55rem;
+    line-height:1.25;
+  }
+
+  .brand .role{
+    margin-top:10px;
+    color:var(--amber);
+    font-size:0.95rem;
+    font-family:'JetBrains Mono', monospace;
+    line-height:1.5;
+  }
+
+  nav.sidenav{
+    margin-top:56px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+
+  nav.sidenav a{
+    color:var(--steel);
+    font-size:0.92rem;
+    padding:9px 0;
+    border-left:2px solid transparent;
+    padding-left:14px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+
+  nav.sidenav a:hover,
+  nav.sidenav a.active{
+    color:var(--paper);
+    border-left-color:var(--amber);
+  }
+
+  .sidebar-foot{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    font-size:0.86rem;
+    color:var(--steel);
+  }
+
+  .sidebar-foot a:hover{ color:var(--amber); }
+
+  .sidebar-foot .loc{
+    color:var(--paper-dim);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.8rem;
+  }
+
+  .mobile-bar{ display:none; }
+
+  /* ---------- Main ---------- */
+  main{
+    margin-left:var(--sidebar-w);
+    width:calc(100% - var(--sidebar-w));
+  }
+
+  section{
+    padding:110px 64px;
+    max-width:920px;
+    border-bottom:1px solid var(--line);
+  }
+
+  section:last-of-type{ border-bottom:none; }
+
+  .kicker{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--amber);
+    font-size:0.82rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+
+  .kicker::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--amber);
+    display:inline-block;
+  }
+
+  /* ---- Hero ---- */
+  #hero{
+    padding-top:96px;
+    padding-bottom:96px;
+  }
+
+  #hero h2{
+    font-size:2.6rem;
+    line-height:1.18;
+    max-width:14ch;
+  }
+
+  #hero .lede{
+    margin-top:26px;
+    max-width:56ch;
+    color:var(--paper-dim);
+    font-size:1.08rem;
+  }
+
+  .diagram-wrap{
+    margin-top:64px;
+  }
+
+  .diagram-caption{
+    margin-top:18px;
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    color:var(--steel);
+  }
+
+  .diagram-caption strong{
+    color:var(--paper);
+    font-weight:600;
+  }
+
+  /* ---- Profile ---- */
+  #profile p{
+    max-width:68ch;
+    color:var(--paper-dim);
+    font-size:1.02rem;
+  }
+
+  #profile p + p{ margin-top:16px; }
+
+  .pillgrid{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .pill{
+    border:1px solid var(--line);
+    padding:7px 14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.8rem;
+    color:var(--paper-dim);
+  }
+
+  /* ---- Timeline ---- */
+  .timeline{
+    margin-top:44px;
+    position:relative;
+  }
+
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:54px;
+    top:6px; bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+
+  .tl-item{
+    position:relative;
+    padding-left:96px;
+    padding-bottom:44px;
+  }
+
+  .tl-item:last-child{ padding-bottom:0; }
+
+  .tl-index{
+    position:absolute;
+    left:0; top:0;
+    width:36px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--steel);
+    text-align:right;
+  }
+
+  .tl-dot{
+    position:absolute;
+    left:50px; top:5px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--ink);
+    border:2px solid var(--amber);
+  }
+
+  .tl-item.current .tl-dot{ background:var(--amber); }
+
+  .tl-role{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.08rem;
+    color:var(--paper);
+  }
+
+  .tl-org{
+    color:var(--amber);
+    font-size:0.92rem;
+    margin-top:2px;
+  }
+
+  .tl-when{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    color:var(--steel);
+    margin-top:4px;
+  }
+
+  .tl-desc{
+    margin-top:10px;
+    color:var(--paper-dim);
+    font-size:0.95rem;
+    max-width:60ch;
+  }
+
+  /* ---- Achievements ---- */
+  .ach-grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+
+  .ach-card{
+    background:var(--ink);
+    padding:28px 26px;
+  }
+
+  .ach-metric{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.7rem;
+    font-weight:700;
+    color:var(--amber);
+  }
+
+  .ach-label{
+    margin-top:10px;
+    color:var(--paper-dim);
+    font-size:0.92rem;
+    max-width:36ch;
+  }
+
+  /* ---- Stack ---- */
+  .stack-block{ margin-top:36px; }
+  .stack-block + .stack-block{ margin-top:32px; }
+
+  .stack-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--steel);
+    margin-bottom:14px;
+  }
+
+  .stack-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .stack-tags span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    color:var(--paper);
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:6px 12px;
+  }
+
+  /* ---- Education ---- */
+  .edu-item{
+    display:flex;
+    justify-content:space-between;
+    gap:24px;
+    padding:20px 0;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+
+  .edu-item:last-child{ border-bottom:1px solid var(--line); }
+
+  .edu-name{
+    font-weight:600;
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--paper);
+  }
+
+  .edu-school{
+    color:var(--paper-dim);
+    font-size:0.94rem;
+    margin-top:4px;
+  }
+
+  .edu-meta{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--steel);
+    white-space:nowrap;
+  }
+
+  /* ---- Contact ---- */
+  #contact{ border-bottom:none; padding-bottom:140px; }
+
+  #contact h2{
+    font-size:2.1rem;
+    max-width:16ch;
+  }
+
+  .contact-row{
+    margin-top:40px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+
+  .contact-btn{
+    border:1px solid var(--line);
+    padding:14px 22px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.86rem;
+    color:var(--paper);
+    transition:border-color .15s ease, color .15s ease;
+  }
+
+  .contact-btn:hover{
+    border-color:var(--amber);
+    color:var(--amber);
+  }
+
+  footer{
+    padding:32px 64px;
+    color:var(--steel);
+    font-size:0.78rem;
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    :root{ --sidebar-w:0px; }
+
+    aside.sidebar{ display:none; }
+
+    .mobile-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 24px;
+      border-bottom:1px solid var(--line);
+      background:var(--panel-2);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .mobile-bar h1{ font-size:1.15rem; }
+
+    .mobile-bar .role{
+      color:var(--amber);
+      font-family:'JetBrains Mono', monospace;
+      font-size:0.72rem;
+      margin-top:4px;
+    }
+
+    main{ margin-left:0; width:100%; }
+
+    section{ padding:64px 24px; }
+
+    #hero{ padding-top:56px; }
+    #hero h2{ font-size:2rem; max-width:none; }
+
+    .ach-grid{ grid-template-columns:1fr; }
+
+    .timeline::before{ left:38px; }
+    .tl-item{ padding-left:66px; }
+    .tl-index{ width:28px; left:0; }
+    .tl-dot{ left:34px; }
+
+    footer{ padding:28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-bar">
+  <div>
+    <h1>Tarun Jain</h1>
+    <div class="role">Engineering Leader — 6 Teams / 80–90 Engineers</div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div>
+      <div class="brand">
+        <h1>Tarun Jain</h1>
+        <div class="role">Engineering Leader<br>Manager&#8209;of&#8209;Managers</div>
+      </div>
+
+      <nav class="sidenav">
+        <a href="#hero">Overview</a>
+        <a href="#profile">Profile</a>
+        <a href="#experience">Experience</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#stack">Technology</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-foot">
+      <div class="loc">Bengaluru, India</div>
+      <a href="mailto:mailtarunjain@gmail.com">mailtarunjain@gmail.com</a>
+      <a href="tel:+919880260868">+91 98802 60868</a>
+      <a href="https://linkedin.com/in/tarunjain07" target="_blank" rel="noopener">linkedin.com/in/tarunjain07</a>
+      <a href="https://github.com/tarun7180" target="_blank" rel="noopener">github.com/tarun7180</a>
+      <a href="https://tarunjain-jaintarun.blogspot.com" target="_blank" rel="noopener">Writing &amp; blog</a>
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="kicker">21+ years in enterprise software</div>
+      <h2>I turn distributed systems into platforms — and engineers into leaders.</h2>
+      <p class="lede">Manager&#8209;of&#8209;managers across finance, cybersecurity, travel and healthcare. Today I lead six engineering teams through six engineering managers, in daily partnership with the CTO and SVP&nbsp;of&nbsp;Engineering — while staying hands&#8209;on with the architecture, AI adoption and delivery practice underneath.</p>
+
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 760 300" width="100%" style="max-width:720px; overflow:visible;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Organization diagram: Tarun leads six engineering managers, each leading a team of engineers, totaling 80 to 90 engineers.">
+          <!-- Tarun node -->
+          <g>
+            <rect x="330" y="0" width="100" height="34" fill="none" stroke="#F2A93B" stroke-width="1.4"></rect>
+            <text x="380" y="21" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#ECEAE2">TARUN</text>
+          </g>
+
+          <!-- connecting lines from Tarun to each EM -->
+          <g stroke="#26314A" stroke-width="1">
+            <line x1="380" y1="34" x2="55" y2="80"></line>
+            <line x1="380" y1="34" x2="185" y2="80"></line>
+            <line x1="380" y1="34" x2="315" y2="80"></line>
+            <line x1="380" y1="34" x2="445" y2="80"></line>
+            <line x1="380" y1="34" x2="575" y2="80"></line>
+            <line x1="380" y1="34" x2="705" y2="80"></line>
+          </g>
+
+          <!-- 6 EM nodes with team clusters -->
+          <g font-family="JetBrains Mono, monospace" font-size="9" fill="#7C8797">
+            <!-- template repeated for 6 teams, x centers: 55,185,315,445,575,705 -->
+            <g>
+              <rect x="30" y="80" width="50" height="24" fill="none" stroke="#7C8797" stroke-width="1"></rect>
+              <text x="55" y="96" text-anchor="middle" fill="#ECEAE2" font-size="9">EM 1</text>
+            </g>
+            <g>
+              <rect x="160" y="80" width="50" height="24" fill="none" stroke="#7C8797" stroke-width="1"></rect>
+              <text x="185" y="96" text-anchor="middle" fill="#ECEAE2" font-size="9">EM 2</text>
+            </g>
+            <g>
+              <rect x="290" y="80" width="50" height="24" fill="none" stroke="#7C8797" stroke-width="1"></rect>
+              <text x="315" y="96" text-anchor="middle" fill="#ECEAE2" font-size="9">EM 3</text>
+            </g>
+            <g>
+              <rect x="420" y="80" width="50" height="24" fill="none" stroke="#7C8797" stroke-width="1"></rect>
+              <text x="445" y="96" text-anchor="middle" fill="#ECEAE2" font-size="9">EM 4</text>
+            </g>
+            <g>
+              <rect x="550" y="80" width="50" height="24" fill="none" stroke="#7C8797" stroke-width="1"></rect>
+              <text x="575" y="96" text-anchor="middle" fill="#ECEAE2" font-size="9">EM 5</text>
+            </g>
+            <g>
+              <rect x="680" y="80" width="50" height="24" fill="none" stroke="#7C8797" stroke-width="1"></rect>
+              <text x="705" y="96" text-anchor="middle" fill="#ECEAE2" font-size="9">EM 6</text>
+            </g>
+          </g>
+
+          <!-- engineer dot clusters under each EM, ~14 dots per team -->
+          <g fill="#F2A93B" opacity="0.85">
+          </g>
+        </svg>
+        <div class="diagram-caption">
+          <span><strong>6</strong> teams</span>
+          <span><strong>6</strong> engineering managers</span>
+          <span><strong>80–90</strong> engineers</span>
+          <span><strong>21+</strong> years experience</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile">
+      <div class="kicker">Executive profile</div>
+      <h3>Building enterprise platforms for two decades — leading the people who build them for the last several.</h3>
+      <p>Engineering and technology leader with 21+ years building and transforming enterprise&#8209;scale software platforms across finance, cybersecurity, travel and healthcare. Currently a manager&#8209;of&#8209;managers leading six engineering teams — 80 to 90 engineers — through engineering managers, owning delivery, technical strategy, organizational planning, talent development and engineering governance in daily partnership with the CTO, Head of Engineering and SVP, Global Head of Engineering.</p>
+      <p>The leadership sits on a deep hands&#8209;on foundation: Java/J2EE, Spring Boot, microservices, distributed systems, AWS and Kubernetes — paired with active leadership of generative AI, RAG, AI agents and AI&#8209;assisted engineering adoption across the organization.</p>
+
+      <div class="pillgrid">
+        <span class="pill">Engineering strategy</span>
+        <span class="pill">Organizational leadership</span>
+        <span class="pill">Manager development</span>
+        <span class="pill">Architecture &amp; modernization</span>
+        <span class="pill">Distributed systems</span>
+        <span class="pill">Cloud &amp; platform engineering</span>
+        <span class="pill">DevSecOps</span>
+        <span class="pill">Agile transformation</span>
+        <span class="pill">Executive &amp; product partnership</span>
+        <span class="pill">GenAI / RAG / AI agents</span>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="kicker">Professional experience</div>
+      <h3>Career timeline</h3>
+
+      <div class="timeline">
+
+        <div class="tl-item current">
+          <div class="tl-index mono">01</div>
+          <div class="tl-dot"></div>
+          <div class="tl-role">Senior Engineering Manager — iTravel Cruise</div>
+          <div class="tl-org">IBS Software Private Limited</div>
+          <div class="tl-when">Sep 2024 – Present</div>
+          <div class="tl-desc">Lead 6 engineering teams (80–90 engineers) through engineering managers as manager&#8209;of&#8209;managers, delivering strategic initiatives across the iTravel Cruise platform. Participate in a daily executive Scrum of Scrums with the CTO, Head of Engineering and SVP, Global Head of Engineering. Own governance across architecture, quality, DevSecOps and AI adoption for a platform built on Java 17, Spring Boot 3, microservices, PostgreSQL, Kubernetes, AWS, ReactJS, Drools and Couchbase.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-index mono">02</div>
+          <div class="tl-dot"></div>
+          <div class="tl-role">Senior Engineering Manager — CFT</div>
+          <div class="tl-org">Société Générale</div>
+          <div class="tl-when">Oct 2023 – Sep 2024</div>
+          <div class="tl-desc">Led modernization of 150+ enterprise applications supporting Compliance, KYC and AML, improving scalability and cloud adoption. Drove cloud&#8209;native modernization using Spring Boot, Kubernetes, AWS, Helm and React, delivering resilient frameworks aligned with regulatory and security standards.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-index mono">03</div>
+          <div class="tl-dot"></div>
+          <div class="tl-role">Engineering Manager — Enterprise Identity Cloud</div>
+          <div class="tl-org">Saviynt</div>
+          <div class="tl-when">Jul 2021 – Oct 2023</div>
+          <div class="tl-desc">Led engineering for an enterprise identity platform spanning identity management, access governance and risk controls. Built and scaled the platform in Java, Spring Boot, microservices, Kubernetes, AWS, MySQL, Helm and React within a distributed&#8209;systems environment.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-index mono">04</div>
+          <div class="tl-dot"></div>
+          <div class="tl-role">Engineering Manager / Lead Engineer — Product Development</div>
+          <div class="tl-org">FICO</div>
+          <div class="tl-when">Sep 2015 – Jul 2021</div>
+          <div class="tl-desc">Led engineering for FICO Cyber Analytics, a real&#8209;time streaming analytics platform (Kafka, Apache Spark, MongoDB, Java, Python, FICO MOSEL) for identifying and prioritizing emerging cyber threats. Led CnR Hub, a microservices&#8209;based secure data&#8209;exchange product, and built a reusable Kafka connector framework recognized with a FICO SPOT Award.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-index mono">05</div>
+          <div class="tl-dot"></div>
+          <div class="tl-role">Engineering Manager / Technical Lead — Matrix Product Development</div>
+          <div class="tl-org">Tangoe India Softek Services</div>
+          <div class="tl-when">Mar 2014 – Aug 2015</div>
+          <div class="tl-desc">Led product development for Matrix, an enterprise communications management platform.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-index mono">06</div>
+          <div class="tl-dot"></div>
+          <div class="tl-role">Senior Associate — Project</div>
+          <div class="tl-org">Cognizant Technology Solutions</div>
+          <div class="tl-when">Sep 2010 – Apr 2013</div>
+          <div class="tl-desc">Delivered enhancement and support for Sterling Commerce MCS/Comergent implementations.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-index mono">07</div>
+          <div class="tl-dot"></div>
+          <div class="tl-role">Consultant</div>
+          <div class="tl-org">Sterling Commerce — AT&amp;T</div>
+          <div class="tl-when">Oct 2008 – Aug 2010</div>
+          <div class="tl-desc">Led customization and implementation of Sterling Commerce MCS/Comergent for a Fortune 500 telecom client.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-index mono">08</div>
+          <div class="tl-dot"></div>
+          <div class="tl-role">Associate Consultant / Module Leader</div>
+          <div class="tl-org">Oracle Financial Services Software</div>
+          <div class="tl-when">Aug 2004 – Sep 2008</div>
+          <div class="tl-desc">Developed Reveleus modules for financial&#8209;services risk, compliance, performance and analytics.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+      <div class="kicker">Selected leadership &amp; architecture achievements</div>
+      <h3>Impact, in numbers</h3>
+
+      <div class="ach-grid">
+        <div class="ach-card">
+          <div class="ach-metric">150+</div>
+          <div class="ach-label">Enterprise applications modernized at Société Générale, spanning Compliance, KYC and AML.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-metric">85% / 100%</div>
+          <div class="ach-label">JUnit and automation test coverage on CnR Hub (FICO), with zero P1 production bugs since launch.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-metric">6 / 80–90</div>
+          <div class="ach-label">Teams and engineers led as manager&#8209;of&#8209;managers, through six direct engineering manager reports.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-metric">150+</div>
+          <div class="ach-label">Articles authored on AI/GenAI, cloud architecture and engineering leadership.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-metric">1</div>
+          <div class="ach-label">FICO SPOT Award, for a reusable Kafka connector framework adopted across multiple microservices.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-metric">50,000</div>
+          <div class="ach-label">Rules — scale at which a Drools rule&#8209;engine bottleneck was diagnosed, fixed, and turned into a standard NFR testing practice.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack">
+      <div class="kicker">Technology &amp; AI</div>
+      <h3>What I build with</h3>
+
+      <div class="stack-block">
+        <div class="stack-title">core technology</div>
+        <div class="stack-tags">
+          <span>Java 17</span><span>Python</span><span>Spring Boot</span><span>Kafka</span>
+          <span>ReactJS</span><span>AWS</span><span>Kubernetes</span><span>Docker</span>
+          <span>Helm</span><span>PostgreSQL</span><span>MySQL</span><span>Oracle</span>
+          <span>MongoDB</span><span>Jenkins</span><span>SonarQube</span><span>Fortify</span>
+          <span>Git</span><span>Jira</span><span>FICO MOSEL</span>
+        </div>
+      </div>
+
+      <div class="stack-block">
+        <div class="stack-title">AI &amp; digital engineering</div>
+        <div class="stack-tags">
+          <span>Generative AI</span><span>RAG</span><span>AI Agents</span><span>Prompt Engineering</span>
+          <span>AI&#8209;assisted Development</span><span>AI Coding Assistant Adoption</span>
+          <span>AI Platform Architecture</span><span>Vector Search / Embeddings</span>
+          <span>LLM Evaluation</span><span>MCP</span><span>LLMOps</span><span>Engineering Productivity</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="kicker">Education</div>
+      <h3>Academic background</h3>
+
+      <div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-name">B.Tech, Computer Science</div>
+            <div class="edu-school">Meerut Institute of Engineering &amp; Technology</div>
+          </div>
+          <div class="edu-meta"></div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-name">PGDIT</div>
+            <div class="edu-school">Indian Institute of Technology (IIT) Kharagpur</div>
+          </div>
+          <div class="edu-meta">2004 · 7.5 CGPA</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-name">PGDBM, Finance</div>
+            <div class="edu-school">Symbiosis Centre for Distance Learning (SCDL)</div>
+          </div>
+          <div class="edu-meta">2008–2010 · A+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="kicker">Get in touch</div>
+      <h2>Let's talk engineering, leadership, or both.</h2>
+      <div class="contact-row">
+        <a class="contact-btn" href="mailto:mailtarunjain@gmail.com">mailtarunjain@gmail.com</a>
+        <a class="contact-btn" href="tel:+919880260868">+91 98802 60868</a>
+        <a class="contact-btn" href="https://linkedin.com/in/tarunjain07" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="contact-btn" href="https://github.com/tarun7180" target="_blank" rel="noopener">GitHub</a>
+        <a class="contact-btn" href="https://tarunjain-jaintarun.blogspot.com" target="_blank" rel="noopener">Blog</a>
+      </div>
+    </section>
+
+    <footer>Tarun Jain — Bengaluru, India</footer>
+
+  </main>
+</div>
+
+<script>
+  // Highlight active section in the sidebar nav on scroll
+  const links = document.querySelectorAll('.sidenav a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+
+  function onScroll(){
+    let idx = 0;
+    const y = window.scrollY + window.innerHeight * 0.3;
+    sections.forEach((sec, i) => {
+      if(sec && sec.offsetTop <= y) idx = i;
+    });
+    links.forEach((l, i) => l.classList.toggle('active', i === idx));
+  }
+
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Draw the engineer-dot clusters for the hero org diagram programmatically
+  (function(){
+    const svg = document.querySelector('#hero svg');
+    if(!svg) return;
+    const ns = 'http://www.w3.org/2000/svg';
+    const centers = [55, 185, 315, 445, 575, 705];
+    const group = document.createElementNS(ns, 'g');
+    group.setAttribute('fill', '#F2A93B');
+    group.setAttribute('opacity', '0.85');
+
+    centers.forEach((cx, teamIdx) => {
+      const count = 14;
+      const cols = 4;
+      for(let i = 0; i < count; i++){
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const dx = cx - 30 + col * 14;
+        const dy = 150 + row * 14;
+        const circle = document.createElementNS(ns, 'circle');
+        circle.setAttribute('cx', dx);
+        circle.setAttribute('cy', dy);
+        circle.setAttribute('r', 2.6);
+        group.appendChild(circle);
+
+        // connecting line from EM box to first dot row
+        if(row === 0 && col === 0){
+          const line = document.createElementNS(ns, 'line');
+          line.setAttribute('x1', cx);
+          line.setAttribute('y1', 104);
+          line.setAttribute('x2', cx);
+          line.setAttribute('y2', 146);
+          line.setAttribute('stroke', '#26314A');
+          line.setAttribute('stroke-width', '1');
+          svg.appendChild(line);
+        }
+      }
+    });
+
+    svg.appendChild(group);
+  })();
+</script>
+
+</body>
+</html>
