@@ -370,6 +370,74 @@
     white-space:nowrap;
   }
 
+  /* ---- Certifications ---- */
+  .cert-grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+
+  .cert-card{
+    background:var(--ink);
+    padding:24px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .cert-platform{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--amber);
+    letter-spacing:0.02em;
+  }
+
+  .cert-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:0.98rem;
+    color:var(--paper);
+    line-height:1.35;
+  }
+
+  .cert-issuer{
+    color:var(--paper-dim);
+    font-size:0.86rem;
+  }
+
+  .cert-meta{
+    margin-top:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    padding-top:10px;
+  }
+
+  .cert-date{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--steel);
+  }
+
+  .cert-verify{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--steel);
+    border:1px solid var(--line);
+    padding:5px 10px;
+    white-space:nowrap;
+    transition:border-color .15s ease, color .15s ease;
+  }
+
+  a.cert-verify:hover{
+    border-color:var(--amber);
+    color:var(--amber);
+  }
+
   /* ---- Contact ---- */
   #contact{ border-bottom:none; padding-bottom:140px; }
 
@@ -441,6 +509,7 @@
     #hero h2{ font-size:2rem; max-width:none; }
 
     .ach-grid{ grid-template-columns:1fr; }
+    .cert-grid{ grid-template-columns:1fr; }
 
     .timeline::before{ left:38px; }
     .tl-item{ padding-left:66px; }
@@ -476,6 +545,7 @@
         <a href="#achievements">Achievements</a>
         <a href="#stack">Technology</a>
         <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -749,6 +819,170 @@
           <div class="edu-meta">2008–2010 · A+</div>
         </div>
       </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="kicker">Certifications</div>
+      <h3>Continuous learning</h3>
+
+      <div class="stack-title" style="margin-top:36px; margin-bottom:0;">LinkedIn Learning</div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-platform">LINKEDIN LEARNING</div>
+          <div class="cert-title">Driving Digital Transformation with Generative AI and Predictive AI Technologies</div>
+          <div class="cert-issuer">LinkedIn Learning</div>
+          <div class="cert-meta">
+            <span class="cert-date">Sep 2026</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">LINKEDIN LEARNING</div>
+          <div class="cert-title">Generative AI and Predictive AI in the Cloud: Foundational Concepts and Scenarios</div>
+          <div class="cert-issuer">LinkedIn Learning</div>
+          <div class="cert-meta">
+            <span class="cert-date">Aug 2026</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">LINKEDIN LEARNING</div>
+          <div class="cert-title">GenAI and Predictive AI Architecture Foundations</div>
+          <div class="cert-issuer">LinkedIn Learning</div>
+          <div class="cert-meta">
+            <span class="cert-date">Aug 2026</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">LINKEDIN LEARNING</div>
+          <div class="cert-title">Build with AI: Leverage Claude Code Subagents in Software Projects</div>
+          <div class="cert-issuer">LinkedIn Learning</div>
+          <div class="cert-meta">
+            <span class="cert-date">Aug 2026</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">LINKEDIN LEARNING</div>
+          <div class="cert-title">Claude Code in Action by Anthropic</div>
+          <div class="cert-issuer">LinkedIn Learning</div>
+          <div class="cert-meta">
+            <span class="cert-date">Jun 2026</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">LINKEDIN LEARNING</div>
+          <div class="cert-title">Copilot in Teams: AI-Powered Collaboration (2024)</div>
+          <div class="cert-issuer">LinkedIn Learning</div>
+          <div class="cert-meta">
+            <span class="cert-date">Nov 2025</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">LINKEDIN LEARNING</div>
+          <div class="cert-title">Learning Kubernetes (2018)</div>
+          <div class="cert-issuer">LinkedIn Learning</div>
+          <div class="cert-meta">
+            <span class="cert-date">Dec 2019</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-title" style="margin-top:44px; margin-bottom:0;">Coursera</div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA · SPECIALIZATION</div>
+          <div class="cert-title">Introduction to Generative AI Learning Path (4 courses)</div>
+          <div class="cert-issuer">Google Cloud</div>
+          <div class="cert-meta">
+            <span class="cert-date">Nov 2025</span>
+            <a class="cert-verify" href="https://coursera.org/verify/specialization/RJ8L7JQKFIBT" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA</div>
+          <div class="cert-title">Python for Data Science, AI &amp; Development</div>
+          <div class="cert-issuer">IBM</div>
+          <div class="cert-meta">
+            <span class="cert-date">Dec 2025</span>
+            <a class="cert-verify" href="https://coursera.org/verify/3YPRF8VW7YYR" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA</div>
+          <div class="cert-title">Generative AI: Introduction and Applications</div>
+          <div class="cert-issuer">IBM</div>
+          <div class="cert-meta">
+            <span class="cert-date">Nov 2025</span>
+            <a class="cert-verify" href="https://coursera.org/verify/TY9TY5V0N26G" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA</div>
+          <div class="cert-title">Generative AI: Prompt Engineering Basics</div>
+          <div class="cert-issuer">IBM</div>
+          <div class="cert-meta">
+            <span class="cert-date">Dec 2025</span>
+            <a class="cert-verify" href="https://coursera.org/verify/8TAUZPE65MGB" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA</div>
+          <div class="cert-title">Responsible AI: Applying AI Principles with Google Cloud</div>
+          <div class="cert-issuer">Google Cloud</div>
+          <div class="cert-meta">
+            <span class="cert-date">Nov 2025</span>
+            <a class="cert-verify" href="https://coursera.org/verify/1ORARQ9X01XC" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA</div>
+          <div class="cert-title">Introduction to Large Language Models</div>
+          <div class="cert-issuer">Google Cloud</div>
+          <div class="cert-meta">
+            <span class="cert-date">Oct 2025</span>
+            <a class="cert-verify" href="https://coursera.org/verify/CDB5QN9BVEM3" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA</div>
+          <div class="cert-title">Introduction to Responsible AI</div>
+          <div class="cert-issuer">Google Cloud</div>
+          <div class="cert-meta">
+            <span class="cert-date">Oct 2025</span>
+            <a class="cert-verify" href="https://coursera.org/verify/GR6JDKRMQ7F5" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA</div>
+          <div class="cert-title">Introduction to Generative AI</div>
+          <div class="cert-issuer">Google Cloud</div>
+          <div class="cert-meta">
+            <span class="cert-date">Oct 2025</span>
+            <a class="cert-verify" href="https://coursera.org/verify/USN5YQZPPWGB" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-platform">COURSERA</div>
+          <div class="cert-title">Introduction to Generative AI</div>
+          <div class="cert-issuer">Duke University</div>
+          <div class="cert-meta">
+            <span class="cert-date">Jul 2026</span>
+            <a class="cert-verify" href="https://coursera.org/verify/FYKHRW590F4Y" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </div>
+      </div>
+      <div class="stack-title" style="margin-top:44px; margin-bottom:0;">NPTEL (IIT Kharagpur)</div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-platform">NPTEL · SWAYAM</div>
+          <div class="cert-title">Introduction to Machine Learning</div>
+          <div class="cert-issuer">IIT Kharagpur · Score 52%</div>
+          <div class="cert-meta">
+            <span class="cert-date">Aug–Oct 2018</span>
+            <a class="cert-verify" href="https://nptel.ac.in/noc" target="_blank" rel="noopener">Validate</a>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- CONTACT -->
