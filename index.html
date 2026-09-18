@@ -370,6 +370,71 @@
     white-space:nowrap;
   }
 
+  /* ---- Writing ---- */
+  .post-grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+
+  .post-card{
+    background:var(--ink);
+    padding:26px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .post-date{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--amber);
+  }
+
+  .post-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.02rem;
+    color:var(--paper);
+    line-height:1.35;
+  }
+
+  .post-blurb{
+    color:var(--paper-dim);
+    font-size:0.88rem;
+    line-height:1.55;
+  }
+
+  .post-read{
+    margin-top:auto;
+    padding-top:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--steel);
+    transition:color .15s ease;
+  }
+
+  a.post-read:hover{ color:var(--amber); }
+
+  .writing-more{
+    margin-top:28px;
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    color:var(--paper);
+    border:1px solid var(--line);
+    padding:12px 20px;
+    transition:border-color .15s ease, color .15s ease;
+  }
+
+  .writing-more:hover{
+    border-color:var(--amber);
+    color:var(--amber);
+  }
+
   /* ---- Certifications ---- */
   .cert-grid{
     margin-top:40px;
@@ -510,6 +575,7 @@
 
     .ach-grid{ grid-template-columns:1fr; }
     .cert-grid{ grid-template-columns:1fr; }
+    .post-grid{ grid-template-columns:1fr; }
 
     .timeline::before{ left:38px; }
     .tl-item{ padding-left:66px; }
@@ -546,6 +612,7 @@
         <a href="#stack">Technology</a>
         <a href="#education">Education</a>
         <a href="#certifications">Certifications</a>
+        <a href="#writing">Writing</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -983,6 +1050,54 @@
         </div>
       </div>
 
+    </section>
+
+    <!-- WRITING -->
+    <section id="writing">
+      <div class="kicker">Writing</div>
+      <h3>From the blog</h3>
+      <p style="color:var(--paper-dim); max-width:60ch; margin-top:-6px;">Selected posts on engineering leadership, AI adoption and digital transformation, from my ongoing blog.</p>
+
+      <div class="post-grid">
+        <div class="post-card">
+          <div class="post-date">Sep 14, 2026</div>
+          <div class="post-title">From Traditional IT to Digital Advantage: Six Priorities for Technology Leaders</div>
+          <div class="post-blurb">Argues that real digital transformation happens when IT and business operate as one team, and lays out six priorities leaders can use to turn technology into business value.</div>
+          <a class="post-read" href="https://tarunjain-jaintarun.blogspot.com/2026/09/from-traditional-it-to-digital.html" target="_blank" rel="noopener">Read post →</a>
+        </div>
+        <div class="post-card">
+          <div class="post-date">Sep 14, 2026</div>
+          <div class="post-title">Key Learnings from Leading Digital — How Organizations Can Win in the Digital Era</div>
+          <div class="post-blurb">Distills lessons from the book "Leading Digital," making the case that winning digitally takes both strong digital capabilities and strong leadership capabilities, not technology alone.</div>
+          <a class="post-read" href="https://tarunjain-jaintarun.blogspot.com/2026/09/key-learnings-from-leading-digital-how.html" target="_blank" rel="noopener">Read post →</a>
+        </div>
+        <div class="post-card">
+          <div class="post-date">Sep 10, 2026</div>
+          <div class="post-title">Digital Transformation Needs Governance, Not Just Technology</div>
+          <div class="post-blurb">Explains why clear ownership and decision-making matter as much as the technology itself, and how existing governance practices can be extended rather than reinvented.</div>
+          <a class="post-read" href="https://tarunjain-jaintarun.blogspot.com/2026/09/digital-transformation-needs-governance.html" target="_blank" rel="noopener">Read post →</a>
+        </div>
+        <div class="post-card">
+          <div class="post-date">Sep 9, 2026</div>
+          <div class="post-title">Digital Transformation Needs People, Not Just Technology</div>
+          <div class="post-blurb">Makes the case that transformation succeeds when employees understand and participate in the vision, not simply when new platforms are rolled out.</div>
+          <a class="post-read" href="https://tarunjain-jaintarun.blogspot.com/2026/09/digital-transformation-needs-people-not.html" target="_blank" rel="noopener">Read post →</a>
+        </div>
+        <div class="post-card">
+          <div class="post-date">Aug 26, 2026</div>
+          <div class="post-title">Building a Digital Vision: From Technology Opportunities to Business Transformation</div>
+          <div class="post-blurb">Looks at how leaders can spot which emerging digital capabilities matter for their industry, starting from real business problems rather than the technology itself.</div>
+          <a class="post-read" href="https://tarunjain-jaintarun.blogspot.com/2026/08/building-digital-vision-from-technology.html" target="_blank" rel="noopener">Read post →</a>
+        </div>
+        <div class="post-card">
+          <div class="post-date">Aug 14, 2026</div>
+          <div class="post-title">Understanding Data in AI: From Data Points to Data Drift</div>
+          <div class="post-blurb">Breaks down foundational data concepts behind machine learning systems — data points, features, labels, and drift — and why they matter for AI performance.</div>
+          <a class="post-read" href="https://tarunjain-jaintarun.blogspot.com/2026/08/understanding-data-in-ai-from-data.html" target="_blank" rel="noopener">Read post →</a>
+        </div>
+      </div>
+
+      <a class="writing-more" href="https://tarunjain-jaintarun.blogspot.com/" target="_blank" rel="noopener">View all posts on the blog →</a>
     </section>
 
     <!-- CONTACT -->
